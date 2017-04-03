@@ -56,7 +56,7 @@ class TridentTD_LineNotify {
     String  getVersion();
     bool    notify(String message); 
   private:
-    float   _version = 1.0.0;
+    float   _version = 1.0;
     String  _token;
     
     WiFiClientSecure _clientSecure;

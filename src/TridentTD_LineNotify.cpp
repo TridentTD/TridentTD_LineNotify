@@ -51,7 +51,7 @@ bool TridentTD_LineNotify::notify(String message){
   //Authorization	Bearer <access_token>
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    DEBUG_PRINT.println("connection LINE failed");
+    DEBUG_PRINT("connection LINE failed");
     return false;   
   }
 
@@ -73,7 +73,7 @@ bool TridentTD_LineNotify::notify(String message){
   while(_clientSecure.connected() && Success_h == false) {
     String line = _clientSecure.readStringUntil('\n');
     if (line == "\r") Success_h = true;
-    DEBUG_PRINT.println(line);
+    DEBUG_PRINTLN(line);
   }
   _clientSecure.peek();
   _clientSecure.stop();
@@ -84,15 +84,15 @@ bool TridentTD_LineNotify::notify(String message){
 bool TridentTD_LineNotify::wificonnect(char* ssid, char* pass){
   WiFi.begin(ssid, pass);
   
-  DEBUG_PRINT.println();
+  DEBUG_PRINTLN();
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    DEBUG_PRINT.print(".");
+    DEBUG_PRINT(".");
   }
-  DEBUG_PRINT.println();
-  DEBUG_PRINT.println("WiFi connected");
-  DEBUG_PRINT.print("IP address: ");
-  DEBUG_PRINT.println(WiFi.localIP());
+  DEBUG_PRINTLN();
+  DEBUG_PRINTLN("WiFi connected");
+  DEBUG_PRINT("IP address: ");
+  DEBUG_PRINTLN(WiFi.localIP());
 
 }
 
