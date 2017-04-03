@@ -40,9 +40,6 @@ TridentTD_LineNotify::TridentTD_LineNotify(String token){
 
 bool TridentTD_LineNotify::notify(String message){
   if(WiFi.status() != WL_CONNECTED) return false;
-
-  // String author = String("Bearer ") + _token;
-  // DEBUG_PRINTLN(author);
   
   //------------ Line Notify API ----------------------------
   //POST https://notify-api.line.me/api/notify
