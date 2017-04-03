@@ -51,15 +51,17 @@ SOFTWARE.
 
 class TridentTD_LineNotify {
   public:
-    TridentTD_LineNotify(char* token);
+    TridentTD_LineNotify(String token);
     bool    wificonnect(char *ssid, char *pass);
     String  getVersion();
     bool    notify(String message); 
   private:
-    String  _version="[TridentTD_LineNotify] Version 1.0.0";
-    char*   _token;
+    float   _version = 1.0.0;
+    String  _token;
     
     WiFiClientSecure _clientSecure;
-};
+}
+;
 
-#endif /* _TRIDENTTD_LINENOTIFY_H_ */
+#endif 
+/* _TRIDENTTD_LINENOTIFY_H_ */

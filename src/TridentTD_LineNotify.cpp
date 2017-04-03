@@ -34,13 +34,12 @@ SOFTWARE.
 /**
  * Constructor.
  */
-TridentTD_LineNotify::TridentTD_LineNotify(char* token){
+TridentTD_LineNotify::TridentTD_LineNotify(String token){
   _token = token;
-
 }
 
 bool TridentTD_LineNotify::notify(String message){
-  if(WiFi.status() != WL_CONNECTED){ return -1; }
+  if(WiFi.status() != WL_CONNECTED) return false;
 
   // String author = String("Bearer ") + _token;
   // DEBUG_PRINTLN(author);
@@ -52,48 +51,51 @@ bool TridentTD_LineNotify::notify(String message){
   //Authorization	Bearer <access_token>
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    Serial.println("connection LINE failed");
-    return -1;   
+    DEBUG_PRINT.println("connection LINE failed");
+    return false;   
   }
 
+  String body = "message=" + message;
   String req = "";
   req += "POST /api/notify HTTP/1.1\r\n";
   req += "Host: notify-api.line.me\r\n";
-  req += "Authorization: Bearer " + String(_token) + "\r\n";
+  req += "Authorization: Bearer " + _token + "\r\n";
   req += "Cache-Control: no-cache\r\n";
   req += "User-Agent: ESP8266\r\n";
   req += "Content-Type: application/x-www-form-urlencoded\r\n";
-  req += "Content-Length: " + String(String("message=" + message).length()) + "\r\n";
+  req += "Content-Length: " + String(body.length()) + "\r\n";
   req += "\r\n";
-  req += "message=" + message;
+  req += body;
 
   _clientSecure.print(req);
   
-  while(_clientSecure.connected()) {
+  bool Success_h = false;
+  while(_clientSecure.connected() && Success_h == false) {
     String line = _clientSecure.readStringUntil('\n');
-    if (line == "\r") {
-      return 1;
-    }
-    //Serial.println(line);
+    if (line == "\r") Success_h = true;
+    DEBUG_PRINT.println(line);
   }
-  return 0;
+  _clientSecure.peek();
+  _clientSecure.stop();
+  return Success_h;
 }
 
 
 bool TridentTD_LineNotify::wificonnect(char* ssid, char* pass){
   WiFi.begin(ssid, pass);
-
-  Serial.println();
+  
+  DEBUG_PRINT.println();
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    DEBUG_PRINT.print(".");
   }
-  Serial.println();
-  Serial.println("WiFi connected");
-  Serial.print("IP address: "); Serial.println(WiFi.localIP());
+  DEBUG_PRINT.println();
+  DEBUG_PRINT.println("WiFi connected");
+  DEBUG_PRINT.print("IP address: ");
+  DEBUG_PRINT.println(WiFi.localIP());
 
 }
 
 String TridentTD_LineNotify::getVersion(){
-  return _version;
+  return (String)("[TridentTD_LineNotify] Version ") + String(_version);
 }
