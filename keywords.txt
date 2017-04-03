@@ -1,0 +1,21 @@
+#######################################
+# Syntax Coloring Map For Ultrasound
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+TridentTD_LineNotify	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+wificonnect 	    KEYWORD2
+notify            KEYWORD2
+getVersion        KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
