@@ -5,7 +5,7 @@
  
  TridentTD_LineNotify.h - A simple client for UBIDOTS
 
- Version 1.0.0  03/04/2560 Buddism Era  (2017)
+ Version 1.0  03/04/2560 Buddism Era  (2017)
  
 
 Copyright (c) 2016 TridentTD
