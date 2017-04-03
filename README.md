@@ -8,7 +8,7 @@ sending message to LINE app in the simplest method.
 
 You can use functions like this
 
-- TridentTD_LineNotify myLine;
+- TridentTD_LineNotify myLINE(LINE_TOKEN);
 - myLine.wificonnect( ssid,password );
 - myLine.notify( message );
 - myLine.getVersion();
