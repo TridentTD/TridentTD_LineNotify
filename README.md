@@ -22,7 +22,7 @@ You can use functions like this
 
 ทำการ Log in ที่ https://notify-bot.line.me/en/
 
-  ![Linenotify.png](Linenotify.png)
+  ![](Linenotify.png)
 
 
 
