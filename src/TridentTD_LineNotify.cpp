@@ -34,12 +34,17 @@ SOFTWARE.
 /**
  * Constructor.
  */
+TridentTD_LineNotify::TridentTD_LineNotify(){
+}
+
+
 TridentTD_LineNotify::TridentTD_LineNotify(String token){
   _token = token;
 }
 
 bool TridentTD_LineNotify::notify(String message){
   if(WiFi.status() != WL_CONNECTED) return false;
+  if(_token == "") return false;
   
   //------------ Line Notify API ----------------------------
   //POST https://notify-api.line.me/api/notify
@@ -64,17 +69,42 @@ bool TridentTD_LineNotify::notify(String message){
   req += "\r\n";
   req += body;
 
-  _clientSecure.print(req);
-  
   bool Success_h = false;
-  while(_clientSecure.connected() && Success_h == false) {
-    String line = _clientSecure.readStringUntil('\n');
-    if (line == "\r") Success_h = true;
-    DEBUG_PRINTLN(line);
+  uint8_t line_try=3;  //เพิ่มหากส่งไม่สำเร็จ จะให้ลงใหม่ 3 หน
+  while(!Success_h && line_try-- >0) {
+    _clientSecure.print(req);
+      
+    while(_clientSecure.connected() && Success_h == false) {
+      String line = _clientSecure.readStringUntil('\n');
+      if (line == "\r") Success_h = true;
+      DEBUG_PRINTLN(line);
+    }
+    delay(10);
   }
   _clientSecure.peek();
   _clientSecure.stop();
+
+  Serial.printf("[LineNotify] %s : \"%s\"\n", Success_h? "SENT OK":"SENT FAIL", message.c_str());
+
   return Success_h;
+}
+
+bool TridentTD_LineNotify::notify(const char* message){
+  return notify(String(message));
+}
+
+bool TridentTD_LineNotify::notify(int number){
+  return notify(String(number));
+}
+
+bool TridentTD_LineNotify::notify(float f, int decimal){
+  return notify(String(f,decimal));
+}
+
+bool TridentTD_LineNotify::notify(String token, String message){
+  if( token =="") return false;
+  _token = token;
+  return notify(message);
 }
 
 
@@ -96,3 +126,5 @@ bool TridentTD_LineNotify::wificonnect(char* ssid, char* pass){
 String TridentTD_LineNotify::getVersion(){
   return (String)("[TridentTD_LineNotify] Version ") + String(_version);
 }
+
+TridentTD_LineNotify LINE;

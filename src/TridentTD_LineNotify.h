@@ -6,7 +6,7 @@
  TridentTD_LineNotify.h - A simple client for UBIDOTS
 
  Version 1.0  03/04/2560 Buddism Era  (2017)
- 
+ Version 1.1  15/02/2561 Buddism Era  (2018)
 
 Copyright (c) 2016 TridentTD
 
@@ -51,17 +51,26 @@ SOFTWARE.
 
 class TridentTD_LineNotify {
   public:
+    TridentTD_LineNotify();
     TridentTD_LineNotify(String token);
     bool    wificonnect(char *ssid, char *pass);
     String  getVersion();
+
+    bool    notify(const char* message);
     bool    notify(String message); 
+    bool    notify(String token, String message );
+    bool    notify(int number);
+    bool    notify(float f,int decimal = 2);
+
   private:
-    float   _version = 1.0;
+    float   _version = 1.1;
     String  _token;
     
     WiFiClientSecure _clientSecure;
 }
 ;
+
+extern TridentTD_LineNotify LINE;
 
 #endif 
 /* _TRIDENTTD_LINENOTIFY_H_ */

@@ -3,18 +3,24 @@
 #######################################
 
 #######################################
+# Library (KEYWORD3)
+#######################################
+
+TridentTD_LineNotify	KEYWORD3
+
+#######################################
 # Datatypes (KEYWORD1)
 #######################################
 
-TridentTD_LineNotify	KEYWORD1
+LINE	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-wificonnect 	    KEYWORD2
-notify            KEYWORD2
-getVersion        KEYWORD2
+wificonnect	KEYWORD2
+notify	KEYWORD2
+getVersion	KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
