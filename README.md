@@ -16,7 +16,9 @@ You can use functions like this
 
 - myLine.getVersion();
 
+ตัวอย่างการส่ง
 
+  ![](example.png)
 
 วิธีสร้าง Line Token
 ---------------------------------------------
@@ -46,3 +48,5 @@ Version
 =====
 
 1.0.0  TridentTD_LineNotify
+1.1    เพิ่ม ให้ส่งซ้ำอัตโนมัติ หากส่งไม่ได้ 3 หน, สามารถส่งแบบตัวเลข หรือ ทศนิยมได้
+
