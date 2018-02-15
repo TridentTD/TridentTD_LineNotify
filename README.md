@@ -18,14 +18,14 @@ You can use functions like this
 
 ตัวอย่างการส่ง
 
-  ![](example.png)
+  ![Example01.png](Example01.png)
 
 วิธีสร้าง Line Token
 ---------------------------------------------
 
 ทำการ Log in ที่ https://notify-bot.line.me/en/
 
-  ![](Linenotify.png)
+  ![Linenotify.png](Linenotify.png)
 
 
 
@@ -47,6 +47,6 @@ You can use functions like this
 Version
 =====
 
-1.0.0  TridentTD_LineNotify
+1.0.0  TridentTD_LineNotify  
 1.1    เพิ่ม ให้ส่งซ้ำอัตโนมัติ หากส่งไม่ได้ 3 หน, สามารถส่งแบบตัวเลข หรือ ทศนิยมได้
 
