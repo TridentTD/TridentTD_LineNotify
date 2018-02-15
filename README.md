@@ -2,6 +2,10 @@ TridentTD_LineNotify
 ============
 [TridentTD] Manabu's Esp8266 IoT Library
 ---------------------------------------------
+  
+TridentTD_LineNotify เป็นไลบรารี่สำหรับส่งเตือนเข้า Line Notify  
+โดยตัวไลบรารี่จะมีระบบป้องกันหากส่งไม่ได้  
+จะทำการส่งใหม่อัตโนมัติให้  
 
 TridentTD_LineNotify is a library for  
 sending message to LINE app in the simplest method.
@@ -16,7 +20,11 @@ You can use functions like this
 
 - myLine.getVersion();
 
-ตัวอย่างการส่ง
+ตัวอย่างการส่ง  
+--------------
+ วิธีใช้จะค่อนข้างง่าย อยากส่งอะไรส่งได้เลย  
+ ไม่ว่าจะเป็นตัวแปรประเภท String, char array, int, float  
+ เพียงใช้คำสั่งเดียวคือ myLINE.notify( .... );  
 
   ![Example01.png](Example01.png)
 
