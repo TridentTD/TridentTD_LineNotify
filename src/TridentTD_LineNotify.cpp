@@ -6,7 +6,7 @@
  TridentTD_LineNotify.h - A simple client for UBIDOTS
 
  Version 1.0  03/04/2560 Buddism Era  (2017)
- 
+ Version 1.1  15/02/2561 Buddism Era  (2018)
 
 Copyright (c) 2016 TridentTD
 
@@ -84,7 +84,7 @@ bool TridentTD_LineNotify::notify(String message){
   _clientSecure.peek();
   _clientSecure.stop();
 
-  Serial.printf("[LineNotify] %s : \"%s\"\n", Success_h? "SENT OK":"SENT FAIL", message.c_str());
+  // Serial.printf("[LineNotify] %s : \"%s\"\n", Success_h? "SENT OK":"SENT FAIL", message.c_str());
 
   return Success_h;
 }
