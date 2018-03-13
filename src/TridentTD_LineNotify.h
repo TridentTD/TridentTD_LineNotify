@@ -66,7 +66,7 @@ class TridentTD_LineNotify {
     float   _version = 1.1;
     String  _token;
     
-    WiFiClientSecure _clientSecure;
+    // WiFiClientSecure _clientSecure;
 }
 ;
 

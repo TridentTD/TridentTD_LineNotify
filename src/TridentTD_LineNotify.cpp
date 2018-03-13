@@ -52,6 +52,8 @@ bool TridentTD_LineNotify::notify(String message){
   //           OR multipart/form-data
   //Authorization	Bearer <access_token>
 
+  WiFiClientSecure _clientSecure;
+
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
     DEBUG_PRINT("connection LINE failed");
     return false;   
@@ -64,6 +66,7 @@ bool TridentTD_LineNotify::notify(String message){
   req += "Authorization: Bearer " + _token + "\r\n";
   req += "Cache-Control: no-cache\r\n";
   req += "User-Agent: ESP8266\r\n";
+  req += "Connection: close\r\n";
   req += "Content-Type: application/x-www-form-urlencoded\r\n";
   req += "Content-Length: " + String(body.length()) + "\r\n";
   req += "\r\n";
