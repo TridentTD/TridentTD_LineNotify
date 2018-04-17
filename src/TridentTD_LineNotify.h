@@ -6,6 +6,7 @@
  Version 1.0  03/04/2560 Buddism Era  (2017)
  Version 1.1  15/02/2561 Buddism Era  (2018)
  Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure()
+ Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code
 
 Copyright (c) 2016-2018 TridentTD
 
@@ -54,8 +55,8 @@ SOFTWARE.
 
 class TridentTD_LineNotify {
   public:
-    TridentTD_LineNotify();
-    TridentTD_LineNotify(String token);
+    TridentTD_LineNotify()              { }
+    TridentTD_LineNotify(String token)  { _token = token; }
 
     String  getVersion();
 
@@ -70,8 +71,9 @@ class TridentTD_LineNotify {
     bool    notifyPicture(String picture_url);
 
   private:
-    float   _version = 2.0;
-    String  _token;    
+    float   _version = 2.1;
+    String  _token;
+    bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
 };
 
 extern TridentTD_LineNotify LINE;

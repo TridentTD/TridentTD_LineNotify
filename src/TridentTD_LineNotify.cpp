@@ -6,6 +6,7 @@
  Version 1.0  03/04/2560 Buddism Era  (2017)
  Version 1.1  15/02/2561 Buddism Era  (2018)
  Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure()
+ Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code
 
 Copyright (c) 2016-2018 TridentTD
 
@@ -30,76 +31,41 @@ SOFTWARE.
 
 #include "TridentTD_LineNotify.h"
 
-
-TridentTD_LineNotify::TridentTD_LineNotify(){ }
-
-TridentTD_LineNotify::TridentTD_LineNotify(String token){
-  _token = token;
+String TridentTD_LineNotify::getVersion(){
+  return (String)("[TridentTD_LineNotify] Version ") + String(_version);
 }
 
-bool TridentTD_LineNotify::notifyPicture(String picture_url) {
-  return notifyPicture("", picture_url);
+bool TridentTD_LineNotify::notify(String message){
+  return _notify(message);
 }
 
-bool TridentTD_LineNotify::notifyPicture(String message, String picture_url) {
-  if(WiFi.status() != WL_CONNECTED) return false;
-  if(_token == "") return false;
-  if(picture_url == "") return false;
-  
-  WiFiClientSecure _clientSecure;
-
-  if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    DEBUG_PRINT("connection LINE failed");
-    return false;   
-  }
-
-  int httpCode = 404;
-
-  String boundary = "----TridentTD_LineNotify--";
-  String body = "--" + boundary + "\r\n";
-        body += "Content-Disposition: form-data; name=\"message\"\r\n\r\n" + message + " \r\n";
-        body += "--" + boundary + "\r\n";
-        body += "Content-Disposition: form-data; name=\"imageThumbnail\"\r\n\r\n" + picture_url + "\r\n";
-        body += "--" + boundary + "\r\n";
-        body += "Content-Disposition: form-data; name=\"imageFullsize\"\r\n\r\n" + picture_url + "\r\n";
-        body += "--" + boundary + "--";
-
-  String req = "POST /api/notify HTTP/1.1\r\n";
-        req += "Host: notify-api.line.me\r\n";
-        req += "Authorization: Bearer " + _token + "\r\n";
-        req += "User-Agent: ESP8266\r\n";
-        req += "Connection: close\r\n";
-        req += "Cache-Control: no-cache\r\n";
-        req += "Content-Length: " + String(body.length()) + "\r\n";
-        req += "Content-Type: multipart/form-data; boundary=" + boundary + "\r\n\r\n";
-        req += body;
-
-  bool Success_h = false;
-  uint8_t line_try=3;  //เพิ่มหากส่งไม่สำเร็จ จะให้ลงใหม่ 3 หน
-  while(!Success_h && line_try-- > 0) {
-    _clientSecure.print(req);
-    while( _clientSecure.connected() && !_clientSecure.available()) delay(10);
-    if( _clientSecure.connected() && _clientSecure.available() ) {
-      String resp = _clientSecure.readStringUntil('\n');
-      httpCode    = resp.substring(resp.indexOf(" ")+1, resp.indexOf(" ", resp.indexOf(" ")+1)).toInt();
-      Success_h   = (httpCode==200);
-      DEBUG_PRINTLN(resp);
-    }
-    delay(10);
-  }
-	_clientSecure.stop();
-  
-  return Success_h;
+bool TridentTD_LineNotify::notify(const char* message){
+  return _notify(String(message));
 }
 
 bool TridentTD_LineNotify::notifySticker(int StickerPackageID, int StickerID){
-	return notifySticker("", StickerPackageID, StickerID);
+  if( StickerPackageID <=0 || StickerID <=0 ) return false;
+  return _notify("", StickerPackageID, StickerID);
 }
 
 bool TridentTD_LineNotify::notifySticker(String message, int StickerPackageID, int StickerID) {
+  if( StickerPackageID <=0 || StickerID <=0 ) return false;
+  return _notify(message, StickerPackageID, StickerID);
+}
+
+bool TridentTD_LineNotify::notifyPicture(String picture_url) {
+  if( picture_url == "") return false;
+  return _notify("", 0,0, picture_url);
+}
+
+bool TridentTD_LineNotify::notifyPicture(String message, String picture_url) {
+  if( picture_url == "") return false;
+  return _notify(message, 0,0, picture_url);
+}
+
+bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int StickerID, String picture_url){
   if(WiFi.status() != WL_CONNECTED) return false;
   if(_token == "") return false;
-  if(StickerPackageID == 0 || StickerID == 0) return false;
   
   WiFiClientSecure _clientSecure;
 
@@ -113,10 +79,18 @@ bool TridentTD_LineNotify::notifySticker(String message, int StickerPackageID, i
   String boundary = "----TridentTD_LineNotify--";
   String body = "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"message\"\r\n\r\n" + message + " \r\n";
+      if( StickerPackageID > 0 && StickerID > 0) {
         body += "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"stickerPackageId\"\r\n\r\n" + String(StickerPackageID) + "\r\n";
         body += "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"stickerId\"\r\n\r\n" + String(StickerID) + "\r\n";
+      }
+      if( picture_url != "") {
+        body += "--" + boundary + "\r\n";
+        body += "Content-Disposition: form-data; name=\"imageThumbnail\"\r\n\r\n" + picture_url + "\r\n";
+        body += "--" + boundary + "\r\n";
+        body += "Content-Disposition: form-data; name=\"imageFullsize\"\r\n\r\n" + picture_url + "\r\n";
+      }
         body += "--" + boundary + "--";
 
   String req = "POST /api/notify HTTP/1.1\r\n";
@@ -142,60 +116,9 @@ bool TridentTD_LineNotify::notifySticker(String message, int StickerPackageID, i
     }
     delay(10);
   }
-	_clientSecure.stop();
+  _clientSecure.stop();
 
   return Success_h;
-}
-
-bool TridentTD_LineNotify::notify(String message){
-  if(WiFi.status() != WL_CONNECTED) return false;
-  if(_token == "") return false;
-  
-  WiFiClientSecure _clientSecure;
-
-  if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    DEBUG_PRINT("connection LINE failed");
-    return false;   
-  }
-
-  int httpCode = 404;
-
-  String body = "message=" + message;
-  String req = "";
-        req += "POST /api/notify HTTP/1.1\r\n";
-        req += "Host: notify-api.line.me\r\n";
-        req += "Authorization: Bearer " + _token + "\r\n";
-        req += "Cache-Control: no-cache\r\n";
-        req += "User-Agent: ESP8266\r\n";
-        req += "Connection: close\r\n";
-        req += "Content-Type: application/x-www-form-urlencoded\r\n";
-        req += "Content-Length: " + String(body.length()) + "\r\n\r\n";
-        req += body;
-
-  bool Success_h = false;
-  uint8_t line_try=3;  //เพิ่มหากส่งไม่สำเร็จ จะให้ลงใหม่ 3 หน
-  while(!Success_h && line_try-- > 0) {
-    _clientSecure.print(req);
-    while( _clientSecure.connected() && !_clientSecure.available()) delay(10);
-    if( _clientSecure.connected() && _clientSecure.available() ) {
-      String resp = _clientSecure.readStringUntil('\n');
-      httpCode    = resp.substring(resp.indexOf(" ")+1, resp.indexOf(" ", resp.indexOf(" ")+1)).toInt();
-      Success_h   = (httpCode==200);
-      DEBUG_PRINTLN(resp);
-    }
-    delay(10);
-  }
-	_clientSecure.stop();
-
-  return Success_h;
-}
-
-bool TridentTD_LineNotify::notify(const char* message){
-  return notify(String(message));
-}
-
-String TridentTD_LineNotify::getVersion(){
-  return (String)("[TridentTD_LineNotify] Version ") + String(_version);
 }
 
 TridentTD_LineNotify LINE;
