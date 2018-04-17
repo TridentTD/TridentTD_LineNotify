@@ -31,6 +31,12 @@ SOFTWARE.
 
 #include "TridentTD_LineNotify.h"
 
+#if defined(ESP8266)
+#define USER_AGENT     "ESP8266"
+#else if defined (ESP32)
+#define USER_AGENT     "ESP32"
+#endif
+
 String TridentTD_LineNotify::getVersion(){
   return (String)("[TridentTD_LineNotify] Version ") + String(_version);
 }
@@ -96,7 +102,7 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   String req = "POST /api/notify HTTP/1.1\r\n";
         req += "Host: notify-api.line.me\r\n";
         req += "Authorization: Bearer " + _token + "\r\n";
-        req += "User-Agent: ESP8266\r\n";
+        req += "User-Agent: " + String(USER_AGENT) + "\r\n";
         req += "Connection: close\r\n";
         req += "Cache-Control: no-cache\r\n";
         req += "Content-Length: " + String(body.length()) + "\r\n";
