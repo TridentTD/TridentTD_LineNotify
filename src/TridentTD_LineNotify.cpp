@@ -85,10 +85,10 @@ bool TridentTD_LineNotify::notifyPicture(String message, String picture_url) {
       Success_h   = (httpCode==200);
       DEBUG_PRINTLN(resp);
     }
-    _clientSecure.stop();
     delay(10);
   }
-
+	_clientSecure.stop();
+  
   return Success_h;
 }
 
@@ -140,9 +140,9 @@ bool TridentTD_LineNotify::notifySticker(String message, int StickerPackageID, i
       Success_h   = (httpCode==200);
       DEBUG_PRINTLN(resp);
     }
-    _clientSecure.stop();
     delay(10);
   }
+	_clientSecure.stop();
 
   return Success_h;
 }
@@ -183,9 +183,9 @@ bool TridentTD_LineNotify::notify(String message){
       Success_h   = (httpCode==200);
       DEBUG_PRINTLN(resp);
     }
-    _clientSecure.stop();
     delay(10);
   }
+	_clientSecure.stop();
 
   return Success_h;
 }
