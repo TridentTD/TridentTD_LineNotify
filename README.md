@@ -3,30 +3,20 @@ TridentTD_LineNotify
 [TridentTD] Manabu's Esp8266 IoT Library
 ---------------------------------------------
   
-TridentTD_LineNotify เป็นไลบรารี่สำหรับส่งเตือนเข้า Line Notify  
-โดยตัวไลบรารี่จะมีระบบป้องกันหากส่งไม่ได้  
-จะทำการส่งใหม่อัตโนมัติให้  
-
-TridentTD_LineNotify is a library for  
-sending message to LINE app in the simplest method.
-
-You can use functions like this
-
-- TridentTD_LineNotify myLINE(LINE_TOKEN);
-
-- myLine.wificonnect( ssid,password );
-
-- myLine.notify( message );
-
-- myLine.getVersion();
+TridentTD_LineNotify เป็นไลบรารี่สำหรับส่งเตือนเข้า Line Notify
+โดยสามารถใช้ได้กับ ESP8266 และ ESP32    
+สามารถส่งได้ทั้ง ข้อความ สติ๊กเกอร์ และ รูปภาพด้วย URL ได้  
+ความสามารถในการส่ง หากส่งไม่สำเร็จจะพยายามส่งให้ใหม่อัตโนมัติ 3 ครั้ง 
 
 ตัวอย่างการส่ง  
 --------------
- วิธีใช้จะค่อนข้างง่าย อยากส่งอะไรส่งได้เลย  
- ไม่ว่าจะเป็นตัวแปรประเภท String, char array, int, float  
- เพียงใช้คำสั่งเดียวคือ myLINE.notify( .... );  
+ วิธีใช้จะค่อนข้างง่าย  
+ หากส่งข้อความ ใช้คำสั่ง LINE.notify( .... );  
+ หากส่งสติ๊กเกอร์ ใช้คำสั่ง LINE.notifySticker( .... );  
+ โดยสามารถเลือกสติ๊กเกอร์ได้จาก https://devdocs.line.me/files/sticker_list.pdf  
+ หากส่งรูปภาพด้วย URL ใช้คำสั่ง LINE.notifyPicture( .... );  
 
-  ![Example01.png](Example01.png)
+  ![Example_01.png](Example_01.png)
 
 วิธีสร้าง Line Token
 ---------------------------------------------
@@ -56,5 +46,6 @@ Version
 =====
 
 1.0.0  TridentTD_LineNotify  
-1.1    เพิ่ม ให้ส่งซ้ำอัตโนมัติ หากส่งไม่ได้ 3 หน, สามารถส่งแบบตัวเลข หรือ ทศนิยมได้
+1.1    เพิ่ม ให้ส่งซ้ำอัตโนมัติ หากส่งไม่ได้ 3 หน, สามารถส่งแบบตัวเลข หรือ ทศนิยมได้  
+2.0    เพิ่มความสามารถส่ง ข้อความ สติ๊กเกอร์ และ รูปภาพได้  
 
