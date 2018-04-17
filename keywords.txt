@@ -18,8 +18,10 @@ LINE	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 
-wificonnect	KEYWORD2
+setToken	KEYWORD2
 notify	KEYWORD2
+notifySticker	KEYWORD2
+notifyPicture	KEYWORD2
 getVersion	KEYWORD2
 
 #######################################

@@ -1,14 +1,13 @@
 /*
+ [TridentTD] : TridentTD's Esp8266 IoT Library
 
- [TridentTD] : MANABU's Esp8266 IoT Library
- www.facebook.com/miniNodeMCU
- 
- TridentTD_LineNotify.h - A simple client for UBIDOTS
+ TridentTD_LineNotify.h - A simple way to send LINE NOTIFY
 
  Version 1.0  03/04/2560 Buddism Era  (2017)
  Version 1.1  15/02/2561 Buddism Era  (2018)
+ Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure()
 
-Copyright (c) 2016 TridentTD
+Copyright (c) 2016-2018 TridentTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,8 +34,12 @@ SOFTWARE.
 #define _TRIDENTTD_LINENOTIFY_H_
 
 #include <Arduino.h>
-#include <ESP8266WiFi.h>
-
+#if defined(ESP8266)
+  #include <ESP8266WiFi.h>
+#else if defined (ESP32)
+  #include <WiFi.h>
+  #include <WiFiClientSecure.h>
+#endif
 
 //#define  LINENOTIFY_DEBUG_MODE
 
@@ -53,22 +56,23 @@ class TridentTD_LineNotify {
   public:
     TridentTD_LineNotify();
     TridentTD_LineNotify(String token);
-    bool    wificonnect(char *ssid, char *pass);
+
     String  getVersion();
+
+    void    setToken(String token)      { _token = token; }
+    void    setToken(const char* token) { _token = token; }
 
     bool    notify(const char* message);
     bool    notify(String message); 
-    bool    notify(String token, String message );
-    bool    notify(int number);
-    bool    notify(float f,int decimal = 2);
+    bool	  notifySticker(String message, int StickerPackageID, int StickerID);
+    bool    notifySticker(int StickerPackageID, int StickerID);
+    bool    notifyPicture(String message, String picture_url);
+    bool    notifyPicture(String picture_url);
 
   private:
-    float   _version = 1.1;
-    String  _token;
-    
-    // WiFiClientSecure _clientSecure;
-}
-;
+    float   _version = 2.0;
+    String  _token;    
+};
 
 extern TridentTD_LineNotify LINE;
 
