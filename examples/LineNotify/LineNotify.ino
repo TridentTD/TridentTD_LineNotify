@@ -1,7 +1,9 @@
 /* 
- * ไลบรารี่ TridentTD_LineNotify version 2.0
+ * ไลบรารี่ TridentTD_LineNotify version 2.1
  * ใช้สำหรับ ส่ง แจ้งเตือนไปยัง LINE สำหรับ ESP8266 และ ESP32
  * สามารถส่งได้ทั้ง ข้อความ , สติกเกอร์ และรูปภาพ(ด้วย url)
+ * -----------------------------------------------------
+ * ให้ save เป็น file ต่างหากก่อนถึงจะส่ง Line Notify ภาษาไทยได้
  */
 
 #include <TridentTD_LineNotify.h>
