@@ -33,7 +33,7 @@ SOFTWARE.
 
 #if defined(ESP8266)
 #define USER_AGENT     "ESP8266"
-#else if defined (ESP32)
+#elif defined (ESP32)
 #define USER_AGENT     "ESP32"
 #endif
 
