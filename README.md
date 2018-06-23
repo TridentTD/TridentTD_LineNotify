@@ -1,7 +1,5 @@
 TridentTD_LineNotify
 ============
-[TridentTD] Manabu's Esp8266 IoT Library
----------------------------------------------
   
 TridentTD_LineNotify เป็นไลบรารี่สำหรับส่งเตือนเข้า Line Notify
 โดยสามารถใช้ได้กับ ESP8266 และ ESP32    
