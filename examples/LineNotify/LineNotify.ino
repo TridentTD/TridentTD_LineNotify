@@ -28,6 +28,10 @@ void setup() {
   // ตัวอย่างส่งข้อความ
   LINE.notify("อุณหภูมิ เกินกำหนด");
 
+  // ตัวอย่างส่งข้อมูล ตัวเลข
+  LINE.notify(2342);          // จำนวนเต็ม
+  LINE.notify(212.43434,5);   // จำนวนจริง แสดง 5 หลัก
+
   // เลือก Line Sticker ได้จาก https://devdocs.line.me/files/sticker_list.pdf
   LINE.notifySticker(3,240);        // ส่ง Line Sticker ด้วย PackageID 3 , StickerID 240
   LINE.notifySticker("Hello",1,2);  // ส่ง Line Sticker ด้วย PackageID 1 , StickerID 2  พร้อมข้อความ
