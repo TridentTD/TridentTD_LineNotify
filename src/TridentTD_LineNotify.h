@@ -65,13 +65,15 @@ class TridentTD_LineNotify {
 
     bool    notify(const char* message);
     bool    notify(String message); 
+    bool    notify(float value, uint8_t decimal = 2);
+    bool    notify(int value);
     bool	  notifySticker(String message, int StickerPackageID, int StickerID);
     bool    notifySticker(int StickerPackageID, int StickerID);
     bool    notifyPicture(String message, String picture_url);
     bool    notifyPicture(String picture_url);
 
   private:
-    float   _version = 2.1;
+    float   _version = 2.2;
     String  _token;
     bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
 };

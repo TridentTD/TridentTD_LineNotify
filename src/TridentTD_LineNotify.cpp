@@ -49,6 +49,15 @@ bool TridentTD_LineNotify::notify(const char* message){
   return _notify(String(message));
 }
 
+
+bool TridentTD_LineNotify::notify(float value, uint8_t decimal){
+  return _notify(String(value, decimal));
+}
+
+bool TridentTD_LineNotify::notify(int value){
+  return _notify(String(value));
+}
+
 bool TridentTD_LineNotify::notifySticker(int StickerPackageID, int StickerID){
   if( StickerPackageID <=0 || StickerID <=0 ) return false;
   return _notify("", StickerPackageID, StickerID);
