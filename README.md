@@ -42,8 +42,9 @@ TridentTD_LineNotify เป็นไลบรารี่สำหรับส�
 
 ![CreateNotifyNameSelectGroup.png](CreateNotifyNameSelectGroup.png)
 
-
-
+## หมายเหตุ
+วิธีการใช้งาน โดยละเอียด โดยคุณประภาส 
+http://www.praphas.com/forum/index.php?topic=356.0  
 
 
 Version
