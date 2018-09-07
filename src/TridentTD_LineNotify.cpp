@@ -85,7 +85,7 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   WiFiClientSecure _clientSecure;
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    DEBUG_PRINT("connection LINE failed");
+    TD_DEBUG_PRINT("connection LINE failed");
     return false;   
   }
 
@@ -127,7 +127,7 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
       String resp = _clientSecure.readStringUntil('\n');
       httpCode    = resp.substring(resp.indexOf(" ")+1, resp.indexOf(" ", resp.indexOf(" ")+1)).toInt();
       Success_h   = (httpCode==200);
-      DEBUG_PRINTLN(resp);
+      TD_DEBUG_PRINTLN(resp);
     }
     delay(10);
   }
