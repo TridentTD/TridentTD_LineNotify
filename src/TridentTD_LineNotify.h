@@ -45,12 +45,12 @@ SOFTWARE.
 //#define  LINENOTIFY_DEBUG_MODE
 
 #ifdef LINENOTIFY_DEBUG_MODE
-    #define DEBUG_PRINTER Serial
-    #define DEBUG_PRINT(...) { DEBUG_PRINTER.print(__VA_ARGS__); }
-    #define DEBUG_PRINTLN(...) { DEBUG_PRINTER.println(__VA_ARGS__); }
+    #define TD_DEBUG_PRINTER Serial
+    #define TD_DEBUG_PRINT(...) { DEBUG_PRINTER.print(__VA_ARGS__); }
+    #define TD_DEBUG_PRINTLN(...) { DEBUG_PRINTER.println(__VA_ARGS__); }
 #else
-    #define DEBUG_PRINT(...) { }
-    #define DEBUG_PRINTLN(...) { }
+    #define TD_DEBUG_PRINT(...) { }
+    #define TD_DEBUG_PRINTLN(...) { }
 #endif
 
 class TridentTD_LineNotify {
