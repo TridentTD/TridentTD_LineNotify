@@ -82,7 +82,11 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   if(WiFi.status() != WL_CONNECTED) return false;
   if(_token == "") return false;
   
+#if defined(ESP8266)
+  axTLS::WiFiClientSecure _clientSecure;
+#elif defined (ESP32)
   WiFiClientSecure _clientSecure;
+#endif
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
     TD_DEBUG_PRINT("connection LINE failed");
