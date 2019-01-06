@@ -3,12 +3,14 @@
 
  TridentTD_LineNotify.cpp - A simple way to send LINE NOTIFY
 
- Version 1.0  03/04/2560 Buddism Era  (2017)
- Version 1.1  15/02/2561 Buddism Era  (2018)
- Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure()
- Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code
+ Version 1.0  03/04/2560 Buddism Era  (2017)  by TridentTD
+ Version 1.1  15/02/2561 Buddism Era  (2018)  by TridentTD
+ Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure() by TridentTD
+ Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code  by TridentTD
+ Version 2.2  20/07/2561 Buddism Era  (2018)  add notify(number) by TridentTD
+ Version 2.3  06/01/2562 Buddism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
 
-Copyright (c) 2016-2018 TridentTD
+Copyright (c) 2016-2019 TridentTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,6 +35,10 @@ SOFTWARE.
 
 #if defined(ESP8266)
 #define USER_AGENT     "ESP8266"
+#include <core_version.h>
+#if !defined(ARDUINO_ESP8266_RELEASE_2_3_0) &&  !defined(ARDUINO_ESP8266_RELEASE_2_4_0) && !defined(ARDUINO_ESP8266_RELEASE_2_4_1)
+#include <WiFiClientSecureAxTLS.h>
+#endif
 #elif defined (ESP32)
 #define USER_AGENT     "ESP32"
 #endif
@@ -81,8 +87,16 @@ bool TridentTD_LineNotify::notifyPicture(String message, String picture_url) {
 bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int StickerID, String picture_url){
   if(WiFi.status() != WL_CONNECTED) return false;
   if(_token == "") return false;
-  
+
+#if defined(ESP8266)
+#if !defined(ARDUINO_ESP8266_RELEASE_2_3_0) &&  !defined(ARDUINO_ESP8266_RELEASE_2_4_0) && !defined(ARDUINO_ESP8266_RELEASE_2_4_1)
+  axTLS::WiFiClientSecure _clientSecure;
+#else
   WiFiClientSecure _clientSecure;
+#endif
+#elif defined (ESP32)
+  WiFiClientSecure _clientSecure;
+#endif
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
     TD_DEBUG_PRINT("connection LINE failed");

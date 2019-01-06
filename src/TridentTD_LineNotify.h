@@ -3,12 +3,14 @@
 
  TridentTD_LineNotify.h - A simple way to send LINE NOTIFY
 
- Version 1.0  03/04/2560 Buddism Era  (2017)
- Version 1.1  15/02/2561 Buddism Era  (2018)
- Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure()
- Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code
+ Version 1.0  03/04/2560 Buddism Era  (2017)  by TridentTD
+ Version 1.1  15/02/2561 Buddism Era  (2018)  by TridentTD
+ Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure() by TridentTD
+ Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code  by TridentTD
+ Version 2.2  20/07/2561 Buddism Era  (2018)  add notify(number) by TridentTD
+ Version 2.3  06/01/2562 Buddism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
 
-Copyright (c) 2016-2018 TridentTD
+Copyright (c) 2016-2019 TridentTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -73,7 +75,7 @@ class TridentTD_LineNotify {
     bool    notifyPicture(String picture_url);
 
   private:
-    float   _version = 2.2;
+    float   _version = 2.3;
     String  _token;
     bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
 };
