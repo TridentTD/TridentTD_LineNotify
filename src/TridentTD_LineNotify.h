@@ -8,7 +8,8 @@
  Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure() by TridentTD
  Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code  by TridentTD
  Version 2.2  20/07/2561 Buddism Era  (2018)  add notify(number) by TridentTD
- Version 2.3  06/01/2562 Buddism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
+ Version 2.3  rename DEBUG_PRINT
+ Version 2.4  06/01/2562 Buddism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
 
 Copyright (c) 2016-2019 TridentTD
 
@@ -75,7 +76,7 @@ class TridentTD_LineNotify {
     bool    notifyPicture(String picture_url);
 
   private:
-    float   _version = 2.3;
+    float   _version = 2.4;
     String  _token;
     bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
 };
