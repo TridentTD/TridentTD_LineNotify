@@ -57,3 +57,5 @@ Version
 2.2    เพิ่ม notify(ตัวเลข) ได้ด้วย  
 2.3    rename DEBUG_PRINT  
 2.4    สนับสนุน Arduino ESP8266 ทุก version จนไปถึง version ล่าสุด 2.5.0-rc1, 2.5.0-rc2  
+3.0    เพิ่ม คำสั่งให้ส่ง Jpg File ที่อยู่บน SPIFFS หรือ SD รวมทั้ง jpg data ออกไปได้ด้วย  
+
