@@ -12,6 +12,14 @@ bool CameraLineNotify(String token);
 void setup() {
   Serial.begin(115200); Serial.println();
 
+
+
+  WiFi.begin(SSID, PASSWORD);
+  Serial.printf("WiFi connecting to %s\n",  SSID);
+  while(WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(400); }
+  Serial.printf("\nWiFi connected\nIP : ");
+  Serial.println(WiFi.localIP());  
+
   LINE.setToken(LINE_TOKEN);
 
   camera_config_t camera_config;
@@ -37,11 +45,7 @@ void setup() {
       camera_config.frame_size = CAMERA_FS_SVGA;
   cam.init(camera_config);
 
-  WiFi.begin(SSID, PASSWORD);
-  Serial.printf("WiFi connecting to %s\n",  SSID);
-  while(WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(400); }
-  Serial.printf("\nWiFi connected\nIP : ");
-  Serial.println(WiFi.localIP());  
+  delay(1000);  // wait a while for camera inner-setting
 
   CameraLineNotify();
 }
