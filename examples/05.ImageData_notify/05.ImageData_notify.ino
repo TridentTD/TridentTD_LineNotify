@@ -10,11 +10,7 @@ OV2640 cam;
 bool CameraLineNotify(String token);
 
 void setup() {
-  WiFi.begin(SSID, PASSWORD);
-  Serial.printf("WiFi connecting to %s\n",  SSID);
-  while(WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(400); }
-  Serial.printf("\nWiFi connected\nIP : ");
-  Serial.println(WiFi.localIP());  
+  Serial.begin(115200); Serial.println();
 
   LINE.setToken(LINE_TOKEN);
 
@@ -40,6 +36,12 @@ void setup() {
       camera_config.pixel_format = CAMERA_PF_JPEG;
       camera_config.frame_size = CAMERA_FS_SVGA;
   cam.init(camera_config);
+
+  WiFi.begin(SSID, PASSWORD);
+  Serial.printf("WiFi connecting to %s\n",  SSID);
+  while(WiFi.status() != WL_CONNECTED) { Serial.print("."); delay(400); }
+  Serial.printf("\nWiFi connected\nIP : ");
+  Serial.println(WiFi.localIP());  
 
   CameraLineNotify();
 }
