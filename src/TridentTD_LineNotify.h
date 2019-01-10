@@ -3,13 +3,14 @@
 
  TridentTD_LineNotify.h - A simple way to send LINE NOTIFY
 
- Version 1.0  03/04/2560 Buddism Era  (2017)  by TridentTD
- Version 1.1  15/02/2561 Buddism Era  (2018)  by TridentTD
- Version 2.0  17/04/2561 Buddism Era  (2018)  add notifySticker()  and notifyPicure() by TridentTD
- Version 2.1  17/04/2561 Buddism Era  (2018)  clean up code for smaller code  by TridentTD
- Version 2.2  20/07/2561 Buddism Era  (2018)  add notify(number) by TridentTD
+ Version 1.0  03/04/2560 Buddhism Era  (2017)  by TridentTD
+ Version 1.1  15/02/2561 Buddhism Era  (2018)  by TridentTD
+ Version 2.0  17/04/2561 Buddhism Era  (2018)  add notifySticker()  and notifyPicure() by TridentTD
+ Version 2.1  17/04/2561 Buddhism Era  (2018)  clean up code for smaller code  by TridentTD
+ Version 2.2  20/07/2561 Buddhism Era  (2018)  add notify(number) by TridentTD
  Version 2.3  rename DEBUG_PRINT
- Version 2.4  06/01/2562 Buddism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
+ Version 2.4  06/01/2562 Buddhism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
+ Version 3.0  10/01/2562 Buddhism Era  (2019)  support send by imageFile and imageData
 
 Copyright (c) 2016-2019 TridentTD
 
