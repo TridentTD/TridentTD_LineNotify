@@ -16,7 +16,7 @@ void setup() {
   Serial.printf("\nWiFi connected\nIP : ");
   Serial.println(WiFi.localIP());  
 
-  LINE.setToken(token);
+  LINE.setToken(LINE_TOKEN);
 
   camera_config_t camera_config;
       camera_config.ledc_channel = LEDC_CHANNEL_0;
@@ -41,13 +41,13 @@ void setup() {
       camera_config.frame_size = CAMERA_FS_SVGA;
   cam.init(camera_config);
 
-  CameraLineNotify(LINE_TOKEN);
+  CameraLineNotify();
 }
 
 void loop() {
 }
 
-bool CameraLineNotify(String token){
+bool CameraLineNotify(){
   cam.run();
   uint8_t *image_data = cam.getfb();
   size_t   image_size = cam.getSize();
