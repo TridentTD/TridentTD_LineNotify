@@ -7,7 +7,7 @@
 
 OV2640 cam;
 
-bool CameraLineNotify(String token);
+bool CameraLineNotify();
 
 void setup() {
   Serial.begin(115200); Serial.println();
