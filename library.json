@@ -1,7 +1,7 @@
 {
   "name": "TridentTD_LineNotify",
   "keywords": "FreeRTOS, ESP32, frameworks",
-  "description": "LINE notify library for ESP8266 & ESP32",
+  "description":  "LINE notify library for ESP8266 & ESP32",
   "homepage": "https://github.com/TridentTD/TridentTD_LineNotify",
   "repository": {
     "type": "git",
