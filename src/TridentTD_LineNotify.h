@@ -95,7 +95,7 @@ class TridentTD_LineNotify {
     bool    notifyPicture(uint8_t* image_data, size_t image_size);
 
   private:
-    float   _version = 3.0.1;
+    float   _version = 3.01;
     String  _token;
     // bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
     bool        _notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="", fs::FS &fs=SPIFFS , String path="", uint8_t* image_data=NULL, size_t image_size=0);
