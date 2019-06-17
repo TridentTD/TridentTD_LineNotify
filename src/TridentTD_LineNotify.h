@@ -12,7 +12,7 @@
  Version 2.4   06/01/2562 Buddhism Era  (2019)  support 2.3.0, 2.4.0, 2.4.1, 2.4.2, 2.5.0-rc1, 2.5.0-rc2 ...  by TridentTD
  Version 3.0   10/01/2562 Buddhism Era  (2019)  support send by imageFile and imageData
  Version 3.0.1 18/06/2562 Buddhism Era  (2019)  cleanup '\n' code message ending when sending message
- 
+
 Copyright (c) 2016-2019 TridentTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
