@@ -130,7 +130,6 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   String boundary = "----TridentTD_LineNotify--";
 
   String body = "--" + boundary + "\r\n";
-        // body += "Content-Disposition: form-data; name=\"message\"\r\n\r\n" + message + " \r\n";
         body += "Content-Disposition: form-data; name=\"message\"\r\n\r\n" + message ;
 
       if( (StickerPackageID > 0 && StickerID > 0) || picture_url != "" ||  path != "" || image_data !=NULL && image_sz > 0 ){
@@ -141,8 +140,8 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
         body += "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"stickerPackageId\"\r\n\r\n" + String(StickerPackageID) + "\r\n";
         body += "--" + boundary + "\r\n";
-        body += "Content-Disposition: form-data; name=\"stickerId\"\r\n\r\n" + String(StickerID) + "\r\n";
-      }
+        body += "Content-Disposition: form-data; name=\"stickerId\"\r\n\r\n" + String(StickerID); // + "\r\n";
+      }      
       if( picture_url != "") {
         body += "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"imageThumbnail\"\r\n\r\n" + picture_url + "\r\n";
