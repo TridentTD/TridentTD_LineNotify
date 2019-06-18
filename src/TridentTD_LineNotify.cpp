@@ -132,7 +132,7 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   String body = "--" + boundary + "\r\n";
         body += "Content-Disposition: form-data; name=\"message\"\r\n\r\n" + message ;
 
-      if( (StickerPackageID > 0 && StickerID > 0) || picture_url != "" ||  path != "" || image_data !=NULL && image_sz > 0 ){
+      if( (StickerPackageID > 0 && StickerID > 0) || picture_url != "" ||  path != "" || (image_data !=NULL && image_sz > 0) ){
         body += " \r\n";
       }
 
