@@ -49,12 +49,12 @@ SOFTWARE.
   #include <FS.h>
   #include <SPIFFS.h>
 #endif
-//#define  LINENOTIFY_DEBUG_MODE
+// #define  LINENOTIFY_DEBUG_MODE
 
 #ifdef LINENOTIFY_DEBUG_MODE
     #define TD_DEBUG_PRINTER Serial
-    #define TD_DEBUG_PRINT(...) { DEBUG_PRINTER.print(__VA_ARGS__); }
-    #define TD_DEBUG_PRINTLN(...) { DEBUG_PRINTER.println(__VA_ARGS__); }
+    #define TD_DEBUG_PRINT(...) { TD_DEBUG_PRINTER.print(__VA_ARGS__); }
+    #define TD_DEBUG_PRINTLN(...) { TD_DEBUG_PRINTER.println(__VA_ARGS__); }
 #else
     #define TD_DEBUG_PRINT(...) { }
     #define TD_DEBUG_PRINTLN(...) { }

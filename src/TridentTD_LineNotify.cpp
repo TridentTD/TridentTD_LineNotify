@@ -119,7 +119,7 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
 #endif
 
   if (!_clientSecure.connect("notify-api.line.me", 443)) {
-    TD_DEBUG_PRINT("connection LINE failed");
+    TD_DEBUG_PRINTLN("connection LINE failed");
     return false;   
   }
 
