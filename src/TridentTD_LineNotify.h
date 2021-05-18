@@ -13,6 +13,7 @@
  Version 3.0   10/01/2562 Buddhism Era  (2019)  support send by imageFile and imageData
  Version 3.0.1 18/06/2562 Buddhism Era  (2019)  cleanup '\n' code message ending when sending message
  Version 3.0.2 07/04/2564 Buddhism Era  (2021)  support ESP32 version 1.0.5, 1.0.6
+ Version 3.0.3 18/05/2564 Buddhism Era  (2021)  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 ) // 2.4.2 - 3.0.0  change to BearSSL
 
 Copyright (c) 2016-2021 TridentTD
 

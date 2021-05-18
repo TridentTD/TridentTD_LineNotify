@@ -13,6 +13,7 @@
  Version 3.0   10/01/2562 Buddhism Era  (2019)  support send by imageFile and imageData
  Version 3.0.1 18/06/2562 Buddhism Era  (2019)  cleanup '\n' code message ending when sending message 
  Version 3.0.2 07/04/2564 Buddhism Era  (2021)  support ESP32 version 1.0.5, 1.0.6
+ Version 3.0.3 18/05/2564 Buddhism Era  (2021)  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 ) // 2.4.2 - 3.0.0  change to BearSSL
 
 Copyright (c) 2016-2021 TridentTD
 
@@ -39,14 +40,12 @@ SOFTWARE.
 // #include <FS.h>
 
 #if defined(ESP8266)
-#define USER_AGENT     "ESP8266"
-#include <core_version.h>
-#if !defined(ARDUINO_ESP8266_RELEASE_2_3_0) &&  !defined(ARDUINO_ESP8266_RELEASE_2_4_0) && !defined(ARDUINO_ESP8266_RELEASE_2_4_1)
-#include <WiFiClientSecureAxTLS.h>
-#endif
+  #define USER_AGENT     "ESP8266"
+  #include <core_version.h>
+
 #elif defined (ESP32)
-#include <core_version.h>
-#define USER_AGENT     "ESP32"
+  #include <core_version.h>
+  #define USER_AGENT     "ESP32"
 #endif
 
 String TridentTD_LineNotify::getVersion(){
@@ -111,10 +110,11 @@ bool TridentTD_LineNotify::_notify(String message, int StickerPackageID, int Sti
   if(_token == "") return false;
 
 #if defined(ESP8266)
-#if !defined(ARDUINO_ESP8266_RELEASE_2_3_0) &&  !defined(ARDUINO_ESP8266_RELEASE_2_4_0) && !defined(ARDUINO_ESP8266_RELEASE_2_4_1)
-  axTLS::WiFiClientSecure _clientSecure;
-#else
+#if defined(ARDUINO_ESP8266_RELEASE_2_3_0) || defined(ARDUINO_ESP8266_RELEASE_2_4_0) || defined(ARDUINO_ESP8266_RELEASE_2_4_1)
   WiFiClientSecure _clientSecure;
+#else
+  BearSSL::WiFiClientSecure _clientSecure;
+  _clientSecure.setInsecure();
 #endif
 #elif defined (ESP32)
   WiFiClientSecure _clientSecure;
