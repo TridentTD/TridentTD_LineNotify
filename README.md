@@ -1,4 +1,4 @@
-TridentTD_LineNotify
+TridentTD_LineNotify [![Latest release](https://img.shields.io/github/release/TridentTD/TridentTD_LineNotify.svg)](https://github.com/TridentTD/TridentTD_LineNotify/releases/latest/)
 ============
   
 TridentTD_LineNotify เป็นไลบรารี่สำหรับส่งเตือนเข้า Line Notify
