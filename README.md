@@ -50,7 +50,8 @@ http://www.praphas.com/forum/index.php?topic=356.0
 โดยละเอียด โดยคุณ MaxMac.  
 https://maxmacstn.wordpress.com/2019/06/16/diy-esp8266-doorbell-mod/
   
-วิธีทำ ESP32 Camera Line Notify  
+วิธีทำ ESP32 Camera Line Notify โดยคุณ S Bit  
+**ESP32 CAM ส่งภาพแจ้งเตือนด้วย LINE Notify เมื่อมีผู้บุกรุก esp32 camera line notify**  
 https://www.youtube.com/watch?v=I-HbdRWwMVY 
   
 Version
