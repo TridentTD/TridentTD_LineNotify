@@ -14,6 +14,7 @@
  Version 3.0.1 18/06/2562 Buddhism Era  (2019)  cleanup '\n' code message ending when sending message 
  Version 3.0.2 07/04/2564 Buddhism Era  (2021)  support ESP32 version 1.0.5, 1.0.6
  Version 3.0.3 18/05/2564 Buddhism Era  (2021)  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 ) // 2.4.2 - 3.0.0  change to BearSSL
+ Version 3.0.4 13/07/2565 Buddhism Era  (2022)  support ESP32 core 2.0.x - 2.0.4 
 
 Copyright (c) 2016-2021 TridentTD
 
@@ -62,7 +63,7 @@ bool TridentTD_LineNotify::notify(const char* message){
 
 
 bool TridentTD_LineNotify::notify(float value, uint8_t decimal){
-  return _notify(String(value, decimal));
+  return _notify(String(value, (uint32_t)decimal));
 }
 
 bool TridentTD_LineNotify::notify(int value){
