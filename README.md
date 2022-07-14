@@ -66,4 +66,6 @@ Version
 2.4    สนับสนุน Arduino ESP8266 ทุก version จนไปถึง version ล่าสุด 2.5.0-rc1, 2.5.0-rc2  
 3.0    เพิ่ม คำสั่งให้ส่ง Jpg File ที่อยู่บน SPIFFS หรือ SD รวมทั้ง jpg data ออกไปได้ด้วย  
 3.0.1  ทำความสะอาดบรรทัดที่เกินมา 1 บรรทัดตอนท้าย เวลาส่งเฉพาะข้อความ ( request by K'Kik boonsug )  
-
+3.0.2  support ESP32 version 1.0.5, 1.0.6
+3.0.3  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 ) // 2.4.2 - 3.0.0  change to BearSSL
+3.0.4  support ESP32 core 2.0.x - 2.0.4 ( support all version 1.0.x - 2.0.4)
