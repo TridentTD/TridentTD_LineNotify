@@ -15,9 +15,10 @@
  Version 3.0.2 07/04/2564 Buddhism Era  (2021)  support ESP32 version 1.0.5, 1.0.6
  Version 3.0.3 18/05/2564 Buddhism Era  (2021)  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 ) // 2.4.2 - 3.0.0  change to BearSSL
  Version 3.0.4 13/07/2565 Buddhism Era  (2022)  support ESP32 core 2.0.x - 2.0.4 
- Version 3.0.5 06/09/2565 Buddhism Ear  (2022)  add new examples
+ Version 3.0.5 06/09/2565 Buddhism Era  (2022)  add new examples
+ Version 3.0.6 10/03/2566 Buddhism Era  (2023)  add new example with static library version
 
-Copyright (c) 2016-2021 TridentTD
+Copyright (c) 2016-2023 TridentTD
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -101,7 +102,7 @@ class TridentTD_LineNotify {
     bool    notifyPicture(uint8_t* image_data, size_t image_size);
 
   private:
-    float   _version = 3.05;
+    float   _version = 3.06;
     String  _token;
     // bool		_notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="");
     bool        _notify(String message, int StickerPackageID=0, int StickerID=0, String picture_url="", fs::FS &fs=SPIFFS , String path="", uint8_t* image_data=NULL, size_t image_size=0);
