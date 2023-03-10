@@ -70,5 +70,6 @@ Version
 3.0.3  support ESP8266 version 3.0.0  ( support all version 2.3.0 - 3.0.0 )  
 3.0.4  support ESP32 core 2.0.x - 2.0.4 ( support all version 1.0.x - 2.0.4)  
 3.0.5  add new examples  
+3.0.6  add new example with static library version
   
  
